@@ -1,5 +1,10 @@
 import React from 'react';
+import { ExerciseCounter } from '../../features/exercise-counter';
 
 export const CounterPage = () => {
-  return <div>CounterPage</div>;
+  return (
+    <div>
+      <ExerciseCounter />
+    </div>
+  );
 };
