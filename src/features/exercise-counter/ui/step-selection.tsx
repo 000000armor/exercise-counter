@@ -16,7 +16,7 @@ export const StepSelection = () => {
       <select
         value={step}
         onChange={handleStepChange}
-        className="block p-2 mb-6 w-full text-sm text-white bg-black rounded-lg border border-white focus:ring-white focus:border-white"
+        className="block p-2 mb-6 w-full h-14 text-sm text-white bg-black rounded-lg border border-white focus:ring-white focus:border-white"
       >
         {options.map((optionValue) => (
           <option key={optionValue}>{optionValue}</option>
