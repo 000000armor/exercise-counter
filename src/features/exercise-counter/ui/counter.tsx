@@ -24,13 +24,13 @@ export const Counter = () => {
       <div className="flex justify-between mb-4">
         <button
           onClick={handleIncreaseButtonClick}
-          className="h-10 px-6 font-semibold rounded-md bg-black text-white"
+          className="h-20 w-20 px-6 font-semibold rounded-md bg-black text-white"
         >
           +
         </button>
         <button
           onClick={handleDecreaseButtonClick}
-          className="h-10 px-6 font-semibold rounded-md bg-white text-black border-black border-2"
+          className="h-20 w-20 px-6 font-semibold rounded-md bg-white text-black border-black border-2"
         >
           -
         </button>
@@ -38,7 +38,7 @@ export const Counter = () => {
       <div>
         <button
           onClick={handleResetButtonClick}
-          className="h-10 px-6 font-semibold rounded-md bg-black text-white"
+          className="w-full h-14 px-6 font-semibold rounded-md bg-black text-white"
         >
           Reset counter
         </button>
