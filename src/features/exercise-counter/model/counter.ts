@@ -25,9 +25,7 @@ sample({
   source: { step: $step, counter: $counter },
   target: decreaseCounterFx,
   fn: ({ step }) => step,
-  filter: ({ counter, step }) => {
-    return counter - step >= 0;
-  },
+  filter: ({ counter, step }) => counter - step >= 0,
   clock: decreaseButtonClicked,
 });
 
