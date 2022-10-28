@@ -1,1 +1,1 @@
-import { DailyActivityPage } from './daily-activity-page';
+export { DailyActivityPage } from './daily-activity-page';
