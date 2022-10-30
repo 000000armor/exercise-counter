@@ -11,7 +11,10 @@ const $step = createStore(10);
 const $counter = createStore(0);
 const $goal = createStore('50');
 
-const $scores = createStore<ScoresType>({});
+const $scores = createStore<ScoresType>({
+  '28/10/2022': { counter: 50, goal: '100' },
+  '29/10/2022': { counter: 100, goal: '100' },
+});
 
 persist({ store: $step, key: 'step' });
 persist({ store: $counter, key: 'counter' });
@@ -24,6 +27,7 @@ const resetButtonClicked = createEvent();
 const goalChanged = createEvent<string>();
 const counterPageMounted = createEvent();
 const goalFieldBlurred = createEvent();
+const deleteDayButtonClicked = createEvent<string>();
 
 const increaseCounterFx = createEffect<number, number>((step) => step);
 const decreaseCounterFx = createEffect<number, number>((step) => step);
@@ -41,6 +45,7 @@ sample({
     increaseCounterFx.doneData,
     decreaseCounterFx.doneData,
     goalChanged,
+    resetButtonClicked,
   ],
 });
 
@@ -67,15 +72,22 @@ $step.on(stepSelected, (_, payload) => +payload);
 
 $goal.on(goalChanged, (_, payload) => payload).reset(goalFieldBlurred);
 
-$scores.on(updateScoresField.doneData, (store, payload) => ({
-  ...store,
-  [currentDate]: payload,
-}));
+$scores
+  .on(updateScoresField.doneData, (store, payload) => ({
+    ...store,
+    [currentDate]: payload,
+  }))
+  .on(deleteDayButtonClicked, (prev, payload) => {
+    const { [payload]: _, ...rest } = prev;
+
+    return rest;
+  });
 
 export {
   $step,
   $counter,
   $goal,
+  $scores,
   increaseButtonClicked,
   decreaseButtonClicked,
   stepSelected,
@@ -83,4 +95,5 @@ export {
   goalChanged,
   counterPageMounted,
   goalFieldBlurred,
+  deleteDayButtonClicked,
 };

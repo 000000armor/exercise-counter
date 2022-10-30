@@ -1,3 +1,5 @@
+import { DailyActivityTable } from '../../features/exercise-counter/ui/daily-activity-table';
+
 export const DailyActivityPage = () => {
-  return <div>DailyActivityPage</div>;
+  return <DailyActivityTable />;
 };
