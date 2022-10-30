@@ -1,4 +1,10 @@
-import { NavLink, BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  NavLink,
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { CounterPage } from './pages/counter-page';
 import { DailyActivityPage } from './pages/daily-activity-page';
 
@@ -12,7 +18,7 @@ const App = () => {
   return (
     <div className="container mx-auto px-4 max-w-3xl">
       <BrowserRouter>
-        <nav className="flex justify-between p-2">
+        <nav className="flex justify-between py-4">
           <NavLink to="/counter" className={classNameCallback}>
             Counter
           </NavLink>
@@ -23,6 +29,7 @@ const App = () => {
         <Routes>
           <Route path="/counter" element={<CounterPage />} />
           <Route path="/daily-activity" element={<DailyActivityPage />} />
+          <Route path="*" element={<Navigate to="/counter" replace />} />
         </Routes>
       </BrowserRouter>
     </div>
